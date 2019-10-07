@@ -2,8 +2,16 @@
 
 Alias script which makes Mac user's development productive.
 
+# Installation
+
+```
+$ ./installer
+```
+
 ## kp
 
 ```
-kill port 80
+$ kp [port]
 ```
+
+By default the port is 80
