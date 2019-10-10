@@ -10,8 +10,14 @@ $ ./installer
 
 ## kp
 
+Kill the process running on the specific port
+
 ```
 $ kp [port]
 ```
 
 By default the port is 80
+
+## tml
+
+reload the tmux config
