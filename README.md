@@ -8,6 +8,11 @@ Alias script which makes Mac user's development productive.
 $ ./installer
 ```
 
+## adm
+
+git add . => git commit
+
+
 ## kp
 
 Kill the process running on the specific port
