@@ -12,6 +12,19 @@ $ ./installer
 
 git add . => git commit
 
+or
+
+```
+$ adm I did this commit because of shitty bugs.
+```
+
+the command above triggers:
+
+```
+$ git add .
+$ git commit -m "I did this commit because of shitty bugs."
+```
+
 
 ## kp
 
