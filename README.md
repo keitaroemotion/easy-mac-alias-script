@@ -39,3 +39,15 @@ By default the port is 80
 ## tml
 
 reload the tmux config
+
+## .tmux.conf
+
+Also for better experience in tmux, here is example of my configs
+
+```
+configs/.tmux.conf
+```
+
+## .vimrc
+
+
