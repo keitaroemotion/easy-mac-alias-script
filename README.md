@@ -25,6 +25,13 @@ $ git add .
 $ git commit -m "I did this commit because of shitty bugs."
 ```
 
+## cached
+
+this is equivalent to `git diff --cached`
+
+## cx
+
+cx can make any files executable. It is equivalent to `chmod +x [file]`
 
 ## kp
 
