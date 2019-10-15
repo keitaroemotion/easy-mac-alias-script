@@ -52,6 +52,19 @@ $ kp [port]
 
 By default the port is 80
 
+
+## rian
+
+```
+$ react-native run-android
+```
+
+## rios
+
+```
+$ react-native run-ios
+```
+
 ## tml
 
 reload the tmux config
