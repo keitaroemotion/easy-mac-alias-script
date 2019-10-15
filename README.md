@@ -25,6 +25,15 @@ $ git add .
 $ git commit -m "I did this commit because of shitty bugs."
 ```
 
+## adp
+
+This is equivalent to:
+
+```
+git add .
+git commit [-m ...]
+git push origin HEAD
+```
 ## cached
 
 this is equivalent to `git diff --cached`
