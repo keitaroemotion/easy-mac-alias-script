@@ -42,6 +42,12 @@ this is equivalent to `git diff --cached`
 
 cx can make any files executable. It is equivalent to `chmod +x [file]`
 
+## gssh
+
+```
+$gcloud compute ssh $@
+```
+
 ## kp
 
 Kill the process running on the specific port
