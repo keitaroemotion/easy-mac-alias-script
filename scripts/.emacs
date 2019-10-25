@@ -1,0 +1,5 @@
+(global-set-key "\M-n" (kbd "C-u 5 C-n"))
+(global-set-key "\M-p" (kbd "C-u 5 C-p"))
+(split-window-right)
+(setq create-lockfiles nil)
+(push (cons "\\*shell\\*" display-buffer--same-window-action) display-buffer-alist)
