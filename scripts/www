@@ -1,0 +1,9 @@
+#!/usr/bin/env bash 
+
+query=""
+for x in $@
+do
+    query+="$x+"
+done
+
+w3m https://www.google.com/search?q=$(echo $query | rev | cut -c 2- | rev )
