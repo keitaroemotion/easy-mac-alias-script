@@ -89,4 +89,10 @@ configs/.tmux.conf
 
 ## .vimrc
 
+## twasty
 
+Can get the top CPU consuming processes
+
+```
+$ ps aux | sort -nrk 3,3 | head -n 5
+```
