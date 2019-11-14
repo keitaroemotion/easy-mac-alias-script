@@ -70,7 +70,9 @@ let g:NERDTreeNodeDelimiter = "\u00a0"
 
 "
 "
-" XXX neosnippet
+" neosnippet
+"
+" you need to add ~/.vim/snippets/[extension].snip for your own snippets
 "
 "
 Plugin 'Shougo/deoplete.nvim'
