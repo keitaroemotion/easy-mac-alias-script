@@ -41,19 +41,11 @@ let $LANG = 'en_US'
 :command Curwin :term ++curwin
 
 command CDC cd %:p:h
-"nnoremap 1 :bot term ++close<CR>
-"nnoremap 4 :vert term ++close<CR>
-
-"autocmd StdinReadPre * let s:std_in=1
-
-"hi Terminal ctermbg=white ctermfg=gray guibg=gray guifg=gray
-"set termwinsize=0x50
-"set termwinsize=0x50
-nnoremap m :res +5<CR>
-nnoremap , :res -5<CR>
-
-nnoremap <C-x>s :bot  term ++close<CR>
+nnoremap <C-x>m :res +5<CR>
+nnoremap <C-x>, :res -5<CR>
+nnoremap <C-x>s :bot  term ++close ++rows=11<CR>
 nnoremap <C-x>v :vert term ++close<CR>
+
 nnoremap <C-x>n :NERDTreeToggle<CR>
 
 Plugin 'vim-airline/vim-airline'
@@ -62,32 +54,55 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_theme='aurora'
+"let g:airline_theme='aurora'
 "let g:airline_theme='light'
+"let g:airline_theme='cool'
+let g:airline_theme='papercolor'
 
-Plugin 'scrooloose/nerdcommenter'
+set ignorecase
+let g:netrw_keepdir=0
 
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not
-let g:NERDToggleCheckAllLines = 1
 let g:NERDTreeNodeDelimiter = "\u00a0"
+
+"
+"
+" XXX neosnippet
+"
+"
+Plugin 'Shougo/deoplete.nvim'
+if !has('nvim')
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/snippets'
