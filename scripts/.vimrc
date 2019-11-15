@@ -77,11 +77,6 @@ syntax keyword WordError teh
 nnoremap <C-j> :cn<CR>
 nnoremap <C-k> :cN<CR>
 
-"set nocompatible
-"filetype plugin on
-"syntax on
-"
-"
 
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
