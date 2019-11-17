@@ -178,3 +178,18 @@ function! PsAuxGrep(procquery)
     let result = system("ps aux | grep " . a:procquery)
     echo result
 endfunction
+
+" Replace
+:command! -nargs=? Replace :call Replace(<f-args>)
+function! Replace(...)
+    let cmd = ""
+
+    if a:0 >= 1 
+        let cmd = "find ./ -not -iwholename '*.git*' -type f -print |xargs file|grep ASCII|cut -d: -f1| xargs sed -i '' 's/" . substitute(a:1, " ", "/", "") . "/g'"
+    else
+    endif
+
+    let result = system(cmd)
+    let result = system("git diff")
+    echo result
+endfunction
