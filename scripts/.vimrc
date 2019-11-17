@@ -171,3 +171,10 @@ function! Cat(file)
     let result = system("cat " . a:file)
     echo result
 endfunction
+
+" ps aux | grep ...
+:command! -nargs=1 PsAuxGrep :call PsAuxGrep(<f-args>)
+function! PsAuxGrep(procquery)
+    let result = system("ps aux | grep " . a:procquery)
+    echo result
+endfunction
