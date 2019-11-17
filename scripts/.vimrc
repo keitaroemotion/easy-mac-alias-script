@@ -160,3 +160,10 @@ command! -nargs=1 Touch call Touch(<f-args>)
 function! Touch(file)
     let result = system("touch " . a:file)
 endfunction
+
+" Cat
+:command! -nargs=1 Cat :call Cat(<f-args>)
+function! Cat(file)
+    let result = system("cat " . a:file)
+    echo result
+endfunction
