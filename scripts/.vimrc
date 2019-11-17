@@ -187,3 +187,11 @@ function! Shebang(...)
     else
     end
 endfunction
+
+command! Cx call Cx() 
+function! Cx()
+    let file   = @%
+    let result = system("chmod +x " . file)
+    echo result
+endfunction
+
