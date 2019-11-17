@@ -179,17 +179,11 @@ function! PsAuxGrep(procquery)
     echo result
 endfunction
 
-" Replace
-:command! -nargs=? Replace :call Replace(<f-args>)
-function! Replace(...)
-    let cmd = ""
-
-    if a:0 >= 1 
-        let cmd = "find ./ -not -iwholename '*.git*' -type f -print |xargs file|grep ASCII|cut -d: -f1| xargs sed -i '' 's/" . substitute(a:1, " ", "/", "") . "/g'"
+:command! -nargs=? Shebang :call Shebang(<f-args>)
+function! Shebang(...)
+    if a:0 >= 1
+        let text = "#/usr/bin/env " . a:1
+        put =text
     else
-    endif
-
-    let result = system(cmd)
-    let result = system("git diff")
-    echo result
+    end
 endfunction
