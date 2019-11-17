@@ -202,3 +202,17 @@ function! Blame()
     echo result
 endfunction
 
+command! Diff call Diff() 
+function! Diff()
+    let result = system("git diff ")
+    echo result
+endfunction
+
+:command! -nargs=? Sed :call Sed(<f-args>)
+function! Sed(...)
+    if a:0 >= 1
+        let result = system("ope -r " . a:1 )
+        echo result
+    else
+    endif
+endfunction
