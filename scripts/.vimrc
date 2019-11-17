@@ -195,3 +195,10 @@ function! Cx()
     echo result
 endfunction
 
+command! Blame call Blame() 
+function! Blame()
+    let file   = @%
+    let result = system("git blame " . file)
+    echo result
+endfunction
+
