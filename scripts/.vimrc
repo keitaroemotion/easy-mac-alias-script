@@ -122,9 +122,13 @@ function! GitStatus()
 endfunction
 
 " Git add
-:command! -nargs=1 Add :call Add(<f-args>)
-function! Add(file)
-    let result = system("git add " . a:file)
+:command! -nargs=? Add :call Add(<f-args>)
+function! Add(...)
+    if a:0 >= 1
+        let result = system("git add " . a:file)
+    else
+        let result = system("git add .")
+    end
     echo result
 endfunction
 
