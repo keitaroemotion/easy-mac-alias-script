@@ -121,6 +121,27 @@ function! GitStatus()
     echo result
 endfunction
 
+" Git add
+:command! -nargs=1 Add :call Add(<f-args>)
+function! Add(file)
+    let result = system("git add " . a:file)
+    echo result
+endfunction
+
+" Git reset
+:command Reset :call Reset()
+function! Reset()
+    let result = system("git reset")
+    echo result
+endfunction
+
+" Git commit
+:command! -nargs=1 Commit :call Commit(<f-args>)
+function! Commit(message)
+    let result = system("git commit -m " . a:message)
+    echo result
+endfunction
+
 " Ls
 :command Ls :call Ls()
 function! Ls()
