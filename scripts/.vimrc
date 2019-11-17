@@ -94,3 +94,10 @@ NeoBundle 'rking/ag.vim'
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
+
+" Screen Capture
+function! Screen()
+    let result = system("screencapture ~/Desktop/pic.png")
+endfunction
+
+:command Screen :call Screen()
