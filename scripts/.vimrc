@@ -99,5 +99,52 @@ NeoBundleCheck
 function! Screen()
     let result = system("screencapture ~/Desktop/pic.png")
 endfunction
-
 :command Screen :call Screen()
+
+" Git reset hard
+function! GitResetHard()
+    let result = system("git reset --hard")
+endfunction
+:command Grh :call GitResetHard()
+
+" Git clean -f
+function! GitCleanF()
+    let result = system("git clean -f")
+    echo result
+endfunction
+:command Gcf :call GitCleanF()
+
+" Git status
+function! GitStatus()
+    let result = system("git status")
+    echo result
+endfunction
+:command St :call GitStatus()
+
+" Ls
+function! Ls()
+    let result = system("ls")
+    echo "\n" . result
+endfunction
+:command Ls :call Ls()
+
+" Tree
+function! Tree()
+    let result = system("tree")
+    echo "\n" . result
+endfunction
+:command Tree :call Tree()
+
+" " Run
+" function! R()
+"     let result = system("./scripts/run")
+"     echo "\n" . result
+" endfunction
+" :command R :call R()
+" 
+" " Test
+" function! T()
+"     let result = system("./scripts/test")
+"     echo "\n" . result
+" endfunction
+" :command T :call T()
