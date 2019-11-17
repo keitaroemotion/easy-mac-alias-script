@@ -96,55 +96,46 @@ filetype plugin indent on
 NeoBundleCheck
 
 " Screen Capture
+:command Screen :call Screen()
 function! Screen()
     let result = system("screencapture ~/Desktop/pic.png")
 endfunction
-:command Screen :call Screen()
 
 " Git reset hard
+:command Grh :call GitResetHard()
 function! GitResetHard()
     let result = system("git reset --hard")
 endfunction
-:command Grh :call GitResetHard()
 
 " Git clean -f
+:command Gcf :call GitCleanF()
 function! GitCleanF()
     let result = system("git clean -f")
     echo result
 endfunction
-:command Gcf :call GitCleanF()
 
 " Git status
+:command St :call GitStatus()
 function! GitStatus()
     let result = system("git status")
     echo result
 endfunction
-:command St :call GitStatus()
 
 " Ls
+:command Ls :call Ls()
 function! Ls()
     let result = system("ls")
     echo "\n" . result
 endfunction
-:command Ls :call Ls()
 
 " Tree
+:command Tree :call Tree()
 function! Tree()
     let result = system("tree")
     echo "\n" . result
 endfunction
-:command Tree :call Tree()
 
-" " Run
-" function! R()
-"     let result = system("./scripts/run")
-"     echo "\n" . result
-" endfunction
-" :command R :call R()
-" 
-" " Test
-" function! T()
-"     let result = system("./scripts/test")
-"     echo "\n" . result
-" endfunction
-" :command T :call T()
+command! -nargs=1 Touch call Touch(<f-args>) 
+function! Touch(file)
+    let result = system("touch " . a:file)
+endfunction
