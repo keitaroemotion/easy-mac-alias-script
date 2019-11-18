@@ -54,10 +54,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
-"let g:airline_theme='aurora'
+let g:airline_theme='aurora'
 "let g:airline_theme='light'
 "let g:airline_theme='cool'
-let g:airline_theme='papercolor'
+"let g:airline_theme='papercolor'
 
 set ignorecase
 let g:netrw_keepdir=0
@@ -110,9 +110,6 @@ autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 autocmd FileType gsp  noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
-
-
 
 " Screen Capture
 :command Screen :call Screen()
@@ -227,6 +224,12 @@ function! Diff()
     echo result
 endfunction
 
+command! Cached call Cached() 
+function! Cached()
+    let result = system("git diff --cached ")
+    echo result
+endfunction
+
 :command! -nargs=? Sed :call Sed(<f-args>)
 function! Sed(...)
     if a:0 >= 1
@@ -247,6 +250,38 @@ function! KillPort(port)
     let result = system("sudo lsof -n -i4TCP:" . a:port . " | grep LISTEN | awk '{print $2}' | sudo xargs kill -9;")
     echo result
     echo "Port removed"
+endfunction
+
+"
+" Grails
+"
+:command! -nargs=? GrailsCreateApp :call GrailsCreateApp(<f-args>)
+function! GrailsCreateApp(...)
+    if a:0 >= 1
+        let result = system("~/.vim/cmd/grails-create-app " . a:1 )
+        echo result
+    else
+    endif
+endfunction
+
+"
+" Grails Run App
+"
+:command! -nargs=? GrailsRunApp :call GrailsRunApp(<f-args>)
+function! GrailsRunApp(...)
+    echo "\ngrails run-app\n" 
+endfunction
+
+"
+" Grails Make Anyway (Scaffolding)
+"
+:command! -nargs=? GrailsScaffold :call GrailsScaffold(<f-args>)
+function! GrailsScaffold(...)
+    if a:0 >= 1
+        let result = system( "~/.vim/cmd/grails-make-anyway " . a:1)
+        echo result
+    else
+    endif
 endfunction
 
 command! Menu call Menu() 

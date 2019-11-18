@@ -1,0 +1,10 @@
+files=""
+
+for line in  $(git status)
+do
+    if [ -f $line ]; then
+        files="$files $line"
+    fi
+done
+
+vim $files
