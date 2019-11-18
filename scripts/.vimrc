@@ -288,9 +288,18 @@ function! GrailsScaffold(...)
     endif
 endfunction
 
-command! Search call Search() 
-function! Search()
-    let result = system("open https://www.google.com/search?q=" . expand("<cword>"))
+:command! -nargs=? Search :call Search(<f-args>)
+function! Search(...)
+    let alphaquery = ""
+    if a:0 >= 1
+        let alphaquery = "+" . substitute(a:1, ' ', '+', "g")
+    endif
+    let result = system("open https://www.google.com/search?q=" . expand("<cword>") . alphaquery)
+endfunction
+
+command! Whatis call WhatIs() 
+function! WhatIs()
+    let result = system("open https://www.google.com/search?q=what+is+" . expand("<cword>"))
 endfunction
 
 command! Menu call Menu() 
