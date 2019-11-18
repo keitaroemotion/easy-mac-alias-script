@@ -223,15 +223,12 @@ function! DockerBuild()
     echo result
 endfunction
 
-command! -nargs=1 KillPort :call KillPort(<f-args>)
-function! KillPort()
-    if a:0 >= 1
-        let result = system("~/.vim/kp " . a:1)
-        echo result
-    endif
+:command! -nargs=1 KillPort :call KillPort(<f-args>)
+function! KillPort(port)
+    let result = system("sudo lsof -n -i4TCP:" . a:port . " | grep LISTEN | awk '{print $2}' | sudo xargs kill -9;")
+    echo result
+    echo "Port removed"
 endfunction
-
-
 
 command! Menu call Menu() 
 function! Menu()
