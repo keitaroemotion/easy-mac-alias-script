@@ -102,18 +102,18 @@ NeoBundleCheck
 Plugin 'maksimr/vim-jsbeautify'
 
 ".vimrc
-map <c-f> :call JsBeautify()<cr>
+map <c-q> :call JsBeautify()<cr>
 " or
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer>  <c-q> :call JsBeautify()<cr>
 " for json
-autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+autocmd FileType json noremap <buffer> <c-q> :call JsonBeautify()<cr>
 " for jsx
-autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+autocmd FileType jsx noremap <buffer> <c-q> :call JsxBeautify()<cr>
 " for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-autocmd FileType gsp  noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+autocmd FileType html noremap <buffer> <c-q> :call HtmlBeautify()<cr>
+autocmd FileType gsp  noremap <buffer> <c-q> :call HtmlBeautify()<cr>
 " for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+autocmd FileType css noremap <buffer> <c-q> :call CSSBeautify()<cr>
 
 " Screen Capture
 :command Screen :call Screen()
@@ -288,13 +288,22 @@ function! GrailsScaffold(...)
     endif
 endfunction
 
-:command! -nargs=? Search :call Search(<f-args>)
-function! Search(...)
+:command! -nargs=? Look :call Look(<f-args>)
+function! Look(...)
     let alphaquery = ""
     if a:0 >= 1
         let alphaquery = "+" . substitute(a:1, ' ', '+', "g")
     endif
     let result = system("open https://www.google.com/search?q=" . expand("<cword>") . alphaquery)
+endfunction
+
+:command! -nargs=? Search :call Xlook(<f-args>)
+function! Xlook(...)
+    let alphaquery = ""
+    if a:0 >= 1
+        let alphaquery = "+" . substitute(a:1, ' ', '+', "g")
+    endif
+    let result = system("open https://www.google.com/search?q=" . expand("<cWORD>") . alphaquery)
 endfunction
 
 command! Whatis call WhatIs() 
@@ -311,7 +320,9 @@ function! Menu()
     echo "Add                       ... git add"
     echo "Reset                     ... git reset"
     echo "Commit [message]          ... git commit"
+    echo "Look [opt: keywords]      ... Search the word currently pointer is on in web"
     echo "Ls                        ... ls"
+    echo "Search [opt: keywords]    ... Same as Look but includes non alphabet (-)"
     echo "Tree                      ... tree"
     echo "Touch     [file mame]     ... touch a file"
     echo "Cat       [file name]     ... cat some file"
@@ -321,6 +332,7 @@ function! Menu()
     echo "Blame                     ... show git blame of current file"
     echo "Diff                      ... Show git diff"
     echo "Sed [from] [to]           ... Replace string [from] into string [to] accorss each file" 
+    echo "<C-q>                     ... Format current file" 
     echo "Menu"
     echo "" 
 endfunction
