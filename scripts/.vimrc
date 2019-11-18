@@ -216,3 +216,26 @@ function! Sed(...)
     else
     endif
 endfunction
+
+command! Menu call Menu() 
+function! Menu()
+    echo "\nScreen                    ... screencapture (mac only)"
+    echo "Grh                       ... git reset --hard"
+    echo "Gcf                       ... git clean -f"
+    echo "St                        ... git status"
+    echo "Add                       ... git add"
+    echo "Reset                     ... git reset"
+    echo "Commit [message]          ... git commit"
+    echo "Ls                        ... ls"
+    echo "Tree                      ... tree"
+    echo "Touch     [file mame]     ... touch a file"
+    echo "Cat       [file name]     ... cat some file"
+    echo "PsAuxGrep [procquery]     ... ps aux | grep [something]"
+    echo "Shebang   [Language name] ... paste #!/usr/bin/env [something]"
+    echo "Cx                        ... chmod +x to the current file"
+    echo "Blame                     ... show git blame of current file"
+    echo "Diff                      ... Show git diff"
+    echo "Sed [from] [to]           ... Replace string [from] into string [to] accorss each file" 
+    echo "Menu"
+    echo "" 
+endfunction
