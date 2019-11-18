@@ -217,6 +217,22 @@ function! Sed(...)
     endif
 endfunction
 
+command! DockerBuild call DockerBuild() 
+function! DockerBuild()
+    let result = system("docker build .")
+    echo result
+endfunction
+
+command! -nargs=1 KillPort :call KillPort(<f-args>)
+function! KillPort()
+    if a:0 >= 1
+        let result = system("~/.vim/kp " . a:1)
+        echo result
+    endif
+endfunction
+
+
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                    ... screencapture (mac only)"
