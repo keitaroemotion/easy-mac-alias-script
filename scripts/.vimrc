@@ -71,6 +71,10 @@ let g:NERDTreeNodeDelimiter = "\u00a0"
 set hlsearch
 iabbrev teh the
 iabbrev hte the
+iabbrev trturn return
+iabbrev rerurn return
+iabbrev returen return
+
 syntax keyword WordError teh
 
 "when vimgrep/grep
@@ -282,6 +286,11 @@ function! GrailsScaffold(...)
         echo result
     else
     endif
+endfunction
+
+command! Search call Search() 
+function! Search()
+    let result = system("open https://www.google.com/search?q=" . expand("<cword>"))
 endfunction
 
 command! Menu call Menu() 
