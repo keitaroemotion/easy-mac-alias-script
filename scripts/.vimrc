@@ -344,6 +344,11 @@ function! Gmail()
     let result = system("open https://mail.google.com/mail/u/1/?pli=1#inbox")
 endfunction
 
+command! Twitter call Twitter() 
+function! Twitter()
+    let result = system("open https://twitter.com/keikunlab")
+endfunction
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                    ... screencapture (mac only)"
