@@ -162,6 +162,19 @@ function! Reset()
 endfunction
 
 " Git commit
+:command! -nargs=? Adp :call Adp(<f-args>)
+function! Adp(...)
+    if a:0 >= 1
+        let result = system("git add .; git commit -m \"" . a:1 . "\"; git push origin HEAD")
+        echo result
+    else
+        let result = system("git add .; git commit -m \"XXX\"; git push origin HEAD")
+        echo result
+    end
+endfunction
+
+
+" Git commit
 :command! -nargs=? Commit :call Commit(<f-args>)
 function! Commit(...)
     if a:0 >= 1
@@ -169,6 +182,18 @@ function! Commit(...)
         echo result
     else
         let result = system("git commit -m " . "XXX")
+    end
+endfunction
+
+" Git log
+:command! -nargs=? Log :call Log(<f-args>)
+function! Log(...)
+    if a:0 >= 1
+        let result = system("git log " . a:1)
+        echo result
+    else
+        let result = system("git log ")
+        echo result
     end
 endfunction
 
