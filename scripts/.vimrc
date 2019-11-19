@@ -362,6 +362,11 @@ function! WhatIs()
     let result = system("open https://www.google.com/search?q=what+is+" . expand("<cword>"))
 endfunction
 
+command! Link call Link() 
+function! Link()
+    let result = system("open " . expand("<cWORD>"))
+endfunction
+
 :command! -nargs=? Dic :call Dic(<f-args>)
 function! Dic(...)
     let alphaquery = ""
