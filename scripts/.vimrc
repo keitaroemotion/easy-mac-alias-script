@@ -74,6 +74,7 @@ iabbrev hte the
 iabbrev trturn return
 iabbrev rerurn return
 iabbrev returen return
+iabbrev taht that
 
 syntax keyword WordError teh
 
@@ -319,6 +320,12 @@ function! Dic(...)
     endif
     let result = system("dict " . expand("<cword>") . alphaquery)
     echo result
+endfunction
+
+command! Wiki call Wiki() 
+function! Wiki()
+    let result = system("touch ~/sugadoc/" . expand("<cword>") . ".md")
+    echo "Wiki created!"
 endfunction
 
 command! Menu call Menu() 
