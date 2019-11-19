@@ -362,6 +362,7 @@ endfunction
 command! Ph call Ph() 
 function! Ph()
     let result = system("git push origin HEAD")
+    echo result
 endfunction
 
 command! Menu call Menu() 
