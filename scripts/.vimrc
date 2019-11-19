@@ -359,6 +359,11 @@ function! Twitter()
     let result = system("open https://twitter.com/keikunlab")
 endfunction
 
+command! Ph call Ph() 
+function! Ph()
+    let result = system("git push origin HEAD")
+endfunction
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                     ... screencapture (mac only)"
