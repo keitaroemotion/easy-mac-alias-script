@@ -420,6 +420,11 @@ function! AWSConsole()
     let result = system("open https://ap-northeast-1.console.aws.amazon.com/console/home?nc2=h_ct&region=ap-northeast-1&src=header-signin#")
 endfunction
 
+command! AWSBlog call AWSBlog()
+function! AWSBlog()
+    let result = system("open https://aws.amazon.com/blogs/aws")
+endfunction
+
 command! EC2 call EC2()
 function! EC2()
     let result = system("open https://ap-northeast-1.console.aws.amazon.com/ec2/home?region=ap-northeast-1#Home:")
