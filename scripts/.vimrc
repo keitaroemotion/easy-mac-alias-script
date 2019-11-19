@@ -19,6 +19,8 @@ filetype plugin indent on
 
 let g:w3m#command = '/usr/local/bin/w3m'
 nnoremap <CR> i<Return><Esc>^k
+nnoremap <Space> i<Space><Esc>
+set number
 
 nnoremap <Up> :echo "No up for you!"<CR>
 vnoremap <Up> :<C-u>echo "No up for you!"<CR>
@@ -238,6 +240,12 @@ function! Shebang(...)
         put =text
     else
     end
+endfunction
+
+command! PyEnc call PyEnc() 
+function! PyEnc(...)
+    let text = "# -*- coding: utf-8 -*-"
+    put =text
 endfunction
 
 command! Cx call Cx() 
