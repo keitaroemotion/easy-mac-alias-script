@@ -328,6 +328,17 @@ function! Wiki()
     echo "Wiki created!"
 endfunction
 
+command! SugadocUpdate call SugadocUpdate() 
+function! SugadocUpdate()
+    let result = system("cd ~/sugadoc; git add .; git commit -m 'articles added'; git push origin HEAD")
+    echo result
+endfunction
+
+command! Github call Github() 
+function! Github()
+    let result = system("open https://github.com/keitaroemotion?tab=repositories")
+endfunction
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                    ... screencapture (mac only)"
