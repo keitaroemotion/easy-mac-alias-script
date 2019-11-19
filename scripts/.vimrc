@@ -290,7 +290,16 @@ function! GrailsScaffold(...)
     endif
 endfunction
 
-:command! -nargs=? Look :call Look(<f-args>)
+:command! -nargs=? BrowseFree :call Look2(<f-args>)
+function! Look2(...)
+    let alphaquery = ""
+    if a:0 >= 1
+        let alphaquery = "+" . substitute(a:1, ' ', '+', "g")
+    endif
+    let result = system("open https://www.google.com/search?q=" . alphaquery)
+endfunction
+
+:command! -nargs=? Browse :call Look(<f-args>)
 function! Look(...)
     let alphaquery = ""
     if a:0 >= 1
@@ -299,7 +308,7 @@ function! Look(...)
     let result = system("open https://www.google.com/search?q=" . expand("<cword>") . alphaquery)
 endfunction
 
-:command! -nargs=? Search :call Xlook(<f-args>)
+:command! -nargs=? BrowseMore :call Xlook(<f-args>)
 function! Xlook(...)
     let alphaquery = ""
     if a:0 >= 1
@@ -352,30 +361,32 @@ endfunction
 
 command! Menu call Menu() 
 function! Menu()
-    echo "\nScreen                    ... screencapture (mac only)"
-    echo "Grh                       ... git reset --hard"
-    echo "Gcf                       ... git clean -f"
-    echo "Gmail                     ... open Gmail  account"
-    echo "Github                    ... open Github account"
-    echo "Wiki                      ... Touch current word (cursor) as new wiki page"
-    echo "Sugadocupdate             ... update my wiki directory"
-    echo "St                        ... git status"
-    echo "Add                       ... git add"
-    echo "Reset                     ... git reset"
-    echo "Commit [message]          ... git commit"
-    echo "Look [opt: keywords]      ... Search the word currently pointer is on in web"
-    echo "Ls                        ... ls"
-    echo "Search [opt: keywords]    ... Same as Look but includes non alphabet (-)"
-    echo "Tree                      ... tree"
-    echo "Touch     [file mame]     ... touch a file"
-    echo "Cat       [file name]     ... cat some file"
-    echo "PsAuxGrep [procquery]     ... ps aux | grep [something]"
-    echo "Shebang   [Language name] ... paste #!/usr/bin/env [something]"
-    echo "Cx                        ... chmod +x to the current file"
-    echo "Blame                     ... show git blame of current file"
-    echo "Diff                      ... Show git diff"
-    echo "Sed [from] [to]           ... Replace string [from] into string [to] accorss each file" 
-    echo "<C-q>                     ... Format current file" 
+    echo "\nScreen                     ... screencapture (mac only)"
+    echo "Grh                        ... git reset --hard"
+    echo "Gcf                        ... git clean -f"
+    echo "Gmail                      ... open Gmail  account"
+    echo "Github                     ... open Github account"
+    echo "Wiki                       ... Touch current word (cursor) as new wiki page"
+    echo "Sugadocupdate              ... update my wiki directory"
+    echo "St                         ... git status"
+    echo "Add                        ... git add"
+    echo "Reset                      ... git reset"
+    echo "Commit [message]           ... git commit"
+    echo "Browse [opt: keywords]     ... Search the word currently pointer is on in web"
+    echo "BrowseFree [opt: keywords] ... Search the web freely"
+    echo "BrowseMore [opt: keywords] ... Browse but can include non \w"
+    echo "Ls                         ... ls"
+    echo "Search [opt: keywords]     ... Same as Look but includes non alphabet (-)"
+    echo "Tree                       ... tree"
+    echo "Touch     [file mame]      ... touch a file"
+    echo "Cat       [file name]      ... cat some file"
+    echo "PsAuxGrep [procquery]      ... ps aux | grep [something]"
+    echo "Shebang   [Language name]  ... paste #!/usr/bin/env [something]"
+    echo "Cx                         ... chmod +x to the current file"
+    echo "Blame                      ... show git blame of current file"
+    echo "Diff                       ... Show git diff"
+    echo "Sed [from] [to]            ... Replace string [from] into string [to] accorss each file" 
+    echo "<C-q>                      ... Format current file" 
     echo "Menu"
     echo "" 
 endfunction
