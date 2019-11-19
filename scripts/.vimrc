@@ -18,6 +18,7 @@ call vundle#end()
 filetype plugin indent on
 
 let g:w3m#command = '/usr/local/bin/w3m'
+nnoremap <CR> i<Return><Esc>^k
 
 nnoremap <Up> :echo "No up for you!"<CR>
 vnoremap <Up> :<C-u>echo "No up for you!"<CR>
