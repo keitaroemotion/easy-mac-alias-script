@@ -359,6 +359,11 @@ function! Twitter()
     let result = system("open https://twitter.com/keikunlab")
 endfunction
 
+command! Twitternew call Twitternew() 
+function! Twitternew()
+    let result = system("open https://twitter.com/compose/tweet")
+endfunction
+
 command! Ph call Ph() 
 function! Ph()
     let result = system("git push origin HEAD")
