@@ -415,6 +415,11 @@ function! Ph()
     echo result
 endfunction
 
+command! Hackernews call Hackernews()
+function! Hackernews()
+    let result = system("open https://news.ycombinator.com")
+endfunction
+
 command! AWSConsole call AWSConsole()
 function! AWSConsole()
     let result = system("open https://ap-northeast-1.console.aws.amazon.com/console/home?nc2=h_ct&region=ap-northeast-1&src=header-signin#")
