@@ -76,6 +76,7 @@ iabbrev rerurn return
 iabbrev returen return
 iabbrev taht that
 
+set noautoindent
 syntax keyword WordError teh
 
 "when vimgrep/grep
