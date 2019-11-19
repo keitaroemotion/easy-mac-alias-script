@@ -35,6 +35,8 @@ nnoremap <Right> :echo "No right for you!"<CR>
 vnoremap <Right> :<C-u>echo "No right for you!"<CR>
 inoremap <Right> <C-o>:echo "No right for you!"<CR>
 
+nnoremap <C-\> :e .<CR>
+
 set langmenu=en_US
 let $LANG = 'en_US'
 :command Docker :vert term ++close docui
