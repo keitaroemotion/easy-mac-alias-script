@@ -339,6 +339,11 @@ function! Github()
     let result = system("open https://github.com/keitaroemotion?tab=repositories")
 endfunction
 
+command! Gmail call Gmail() 
+function! Gmail()
+    let result = system("open https://mail.google.com/mail/u/1/?pli=1#inbox")
+endfunction
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                    ... screencapture (mac only)"
