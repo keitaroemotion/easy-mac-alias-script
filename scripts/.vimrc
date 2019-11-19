@@ -450,6 +450,7 @@ function! Menu()
     echo "Diff                       ... Show git diff"
     echo "Sed [from] [to]            ... Replace string [from] into string [to] accorss each file" 
     echo "<C-q>                      ... Format current file" 
+    echo "<C-\>                      ... Show current directlry = :E" 
     echo "Menu"
     echo "" 
 endfunction
