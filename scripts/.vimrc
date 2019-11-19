@@ -162,10 +162,14 @@ function! Reset()
 endfunction
 
 " Git commit
-:command! -nargs=1 Commit :call Commit(<f-args>)
-function! Commit(message)
-    let result = system("git commit -m " . a:message)
-    echo result
+:command! -nargs=? Commit :call Commit(<f-args>)
+function! Commit(...)
+    if a:0 >= 1
+        let result = system("git commit -m \"" . a:1 . "\"")
+        echo result
+    else
+        let result = system("git commit -m " . "XXX")
+    end
 endfunction
 
 " Ls
