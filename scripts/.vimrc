@@ -311,6 +311,16 @@ function! WhatIs()
     let result = system("open https://www.google.com/search?q=what+is+" . expand("<cword>"))
 endfunction
 
+:command! -nargs=? Dic :call Dic(<f-args>)
+function! Dic(...)
+    let alphaquery = ""
+    if a:0 >= 1
+        let alphaquery = "+" . substitute(a:1, ' ', '+', "g")
+    endif
+    let result = system("dict " . expand("<cword>") . alphaquery)
+    echo result
+endfunction
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                    ... screencapture (mac only)"
