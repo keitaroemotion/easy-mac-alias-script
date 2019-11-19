@@ -204,7 +204,7 @@ endfunction
 :command! -nargs=? Shebang :call Shebang(<f-args>)
 function! Shebang(...)
     if a:0 >= 1
-        let text = "#/usr/bin/env " . a:1
+        let text = "#!/usr/bin/env " . a:1
         put =text
     else
     end
