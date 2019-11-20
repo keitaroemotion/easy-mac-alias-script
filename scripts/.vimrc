@@ -415,6 +415,11 @@ function! Ph()
     echo result
 endfunction
 
+command! SecurityNews call Securitynews()
+function! Securitynews()
+    let result = system("open https://www.scmagazine.com/home/security-news/")
+endfunction
+
 command! Hackernews call Hackernews()
 function! Hackernews()
     let result = system("open https://news.ycombinator.com")
