@@ -34,7 +34,7 @@ inoremap <Left> <C-o>:echo "No left for you!"<CR>
 nnoremap <Right> :echo "No right for you!"<CR>
 vnoremap <Right> :<C-u>echo "No right for you!"<CR>
 inoremap <Right> <C-o>:echo "No right for you!"<CR>
-
+"tnoremap <C-[> <C-w>N
 nnoremap <C-\> :e .<CR>
 
 set langmenu=en_US
@@ -64,7 +64,7 @@ let g:airline_theme='aurora'
 "let g:airline_theme='cool'
 "let g:airline_theme='papercolor'
 
-set ignorecase
+" set ignorecase
 let g:netrw_keepdir=0
 
 if has("autocmd")
@@ -89,7 +89,7 @@ nnoremap <C-j> :cn<CR>
 nnoremap <C-k> :cN<CR>
 
 
-" Note: Skip initialization for vim-tiny or vim-small.
+ Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
 if &compatible
@@ -177,7 +177,6 @@ function! Adp(...)
         echo result
     end
 endfunction
-
 
 " Git commit
 :command! -nargs=? Commit :call Commit(<f-args>)
@@ -435,8 +434,8 @@ function! AWSBlog()
     let result = system("open https://aws.amazon.com/blogs/aws")
 endfunction
 
-command! EC2 call EC2()
-function! EC2()
+command! AWSEC2 call AWSEC2()
+function! AWSEC2()
     let result = system("open https://ap-northeast-1.console.aws.amazon.com/ec2/home?region=ap-northeast-1#Home:")
 endfunction
 
