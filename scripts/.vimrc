@@ -441,6 +441,16 @@ function! AWSEC2()
     let result = system("open https://ap-northeast-1.console.aws.amazon.com/ec2/home?region=ap-northeast-1#Home:")
 endfunction
 
+command! Atmarkit call Atmarkit()
+function! Atmarkit()
+    let result = system("open https://www.atmarkit.co.jp/ait/subtop/features/special/")
+endfunction
+
+command! Task call Task()
+function! Task()
+    let result = system("open https://calendar.google.com/calendar/b/1/r")
+endfunction
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                     ... screencapture (mac only)"
@@ -472,10 +482,17 @@ function! Menu()
     echo "Sed [from] [to]            ... Replace string [from] into string [to] accorss each file" 
     echo "<C-q>                      ... Format current file" 
     echo "<C-\>                      ... Show current directlry = :E" 
-    echo "Menu"
+    echo "Securitynews               ... open Securitynews   "
+    echo "Hackernews                 ... open Hackernews"
+    echo "AWSBlog                    ... open AWSBlog"
+    echo "AWSEC2                     ... open AWS Console (EC2) "
+    echo "AWSConsole                 ... open AWSConsole "
+    echo "Atmarkit                   ... open ITNews (Japanese)"
+    echo "Task                       ... open Google Calendar and your tasks"
+    echo "Menu                       ... " 
     echo "" 
 endfunction
-
+set hidden
 hi CursorLine   cterm=NONE ctermbg=lightred ctermfg=black guibg=lightred guifg=black
 "hi CursorColumn cterm=NONE ctermbg=lightred ctermfg=white guibg=lightred guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
