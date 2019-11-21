@@ -15,7 +15,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 call vundle#end()
-filetype plugin indent on
+"filetype plugin indent on
 
 let g:w3m#command = '/usr/local/bin/w3m'
 nnoremap <CR> i<Return><Esc>^k
@@ -59,13 +59,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline_theme='aurora'
+"let g:airline_theme='aurora'
+let g:airline_theme='badwolf'
 "let g:airline_theme='light'
 "let g:airline_theme='cool'
 "let g:airline_theme='papercolor'
 
 " set ignorecase
 let g:netrw_keepdir=0
+let g:netrw_banner = 0
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -89,7 +91,7 @@ nnoremap <C-j> :cn<CR>
 nnoremap <C-k> :cN<CR>
 
 
- Note: Skip initialization for vim-tiny or vim-small.
+" Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
 if &compatible
@@ -103,7 +105,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'rking/ag.vim'
 
 call neobundle#end()
-filetype plugin indent on
+"filetype plugin indent on
 NeoBundleCheck
 
 Plugin 'maksimr/vim-jsbeautify'
@@ -473,3 +475,12 @@ function! Menu()
     echo "Menu"
     echo "" 
 endfunction
+
+hi CursorLine   cterm=NONE ctermbg=lightred ctermfg=black guibg=lightred guifg=black
+"hi CursorColumn cterm=NONE ctermbg=lightred ctermfg=white guibg=lightred guifg=white
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
