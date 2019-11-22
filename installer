@@ -1,5 +1,11 @@
-git clone https://github.com/skanehira/go-starwars.git
-cd go-starwars
-GO111MODULE=on packr install
-
 cp scripts/* /usr/local/bin
+
+if [ $1 == "--init" ]; then
+    #
+    # :PluginInstall after you installed plugins
+    #
+    cd ~/.vim/bundle && git clone https://github.com/rking/ag.vim ag && echo "set runtimepath^=~/.vim/bundle/ag" >> ~/.vimrc
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+sudo cp -r .vim/* ~/.vim

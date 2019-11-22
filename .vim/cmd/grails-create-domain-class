@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+for x in $@
+do
+    if [ -z $x ]; then
+        printf "\nYou need argument such as: [com.xxx.yyy.Bbbb]\n\n"
+    fi
+
+    grails create-domain-class $x 
+done

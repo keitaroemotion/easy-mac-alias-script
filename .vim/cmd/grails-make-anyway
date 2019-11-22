@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+for x in $@
+do
+    if [ -z $x ]; then
+        printf "\nYou need argument such as: [com.xxx.yyy.Bbbb]\n\n"
+        continue
+    fi
+
+    if [[ ! $x =~ ^([a-zA-Z\.]+)+([.]+)([A-Z])([a-z]+)$ ]]; then
+        printf "\nNamespace is not correct Example: com.sugano.User\n\n"
+        continue
+    fi
+
+    grails create-domain-class $(echo $x | sed 's/\./ /g' | awk '{print $NF}'| tr '[:upper:]' '[:lower:]') 
+    grails generate-all $x 
+done

@@ -1,0 +1,6 @@
+if [[ ! $1 =~ ^([a-zA-Z\.]+)+([.]+)([a-zA-Z]+)+$ ]]; then
+    printf "\nNamespace is not correct\n\n"
+    continue
+fi
+
+grails create-app $1

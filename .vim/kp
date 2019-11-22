@@ -1,0 +1,3 @@
+PORT=${1-80}
+echo "Process running on port $PORT closed..."
+sudo lsof -n -i4TCP:$PORT | grep LISTEN | awk '{print $2}' | sudo xargs kill -9
