@@ -331,6 +331,15 @@ function! GrailsScaffold(...)
     endif
 endfunction
 
+:command! -nargs=? Localhost :call Localhost(<f-args>)
+function! Localhost(...)
+    let alphaquery = ""
+    if a:0 >= 1
+        let alphaquery = ":" . a:1
+    endif
+    let result = system("open http://127.0.0.1" . alphaquery)
+endfunction
+
 :command! -nargs=? BrowseFree :call Look2(<f-args>)
 function! Look2(...)
     let alphaquery = ""
