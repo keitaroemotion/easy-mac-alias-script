@@ -399,67 +399,27 @@ function! SugadocUpdate()
     echo result
 endfunction
 
-command! Github call Github() 
-function! Github()
-    let result = system("open https://github.com/keitaroemotion?tab=repositories")
-endfunction
+command! Ph           call Git("push origin HEAD")
+command! Github       call WebOpen("github.com/keitaroemotion?tab=repositories")
+command! Gmail        call WebOpen("mail.google.com/mail/u/1/?pli=1#inbox")
+command! Twitter      call WebOpen("twitter.com/keikunlab")
+command! Twitternew   call WebOpen("twitter.com/compose/tweet")
+command! Securitynews call WebOpen("www.scmagazine.com/home/security-news/")
+command! Hackernews   call WebOpen("news.ycombinator.com")
+command! AWSConsole   call WebOpen("ap-northeast-1.console.aws.amazon.com/console/home?nc2=h_ct&region=ap-northeast-1&src=header-signin#")
+command! AWSBlog      call WebOpen("aws.amazon.com/blogs/aws")
+command! AWSEC2       call WebOpen("ap-northeast-1.console.aws.amazon.com/ec2/home?region=ap-northeast-1#Home:")
+command! Atmarkit     call WebOpen("www.atmarkit.co.jp/ait/subtop/features/special/")
+command! Task         call WebOpen("calendar.google.com/calendar/b/1/r")
 
-command! Gmail call Gmail() 
-function! Gmail()
-    let result = system("open https://mail.google.com/mail/u/1/?pli=1#inbox")
-endfunction
-
-command! Twitter call Twitter() 
-function! Twitter()
-    let result = system("open https://twitter.com/keikunlab")
-endfunction
-
-command! Twitternew call Twitternew() 
-function! Twitternew()
-    let result = system("open https://twitter.com/compose/tweet")
-endfunction
-
-command! Ph call Ph() 
-function! Ph()
-    let result = system("git push origin HEAD")
+function! Git(...)
+    let result = system("git " . a:1)
     echo result
 endfunction
 
-command! SecurityNews call Securitynews()
-function! Securitynews()
-    let result = system("open https://www.scmagazine.com/home/security-news/")
+function! WebOpen(...)
+    let result = system("open https://" . a:1)
 endfunction
-
-command! Hackernews call Hackernews()
-function! Hackernews()
-    let result = system("open https://news.ycombinator.com")
-endfunction
-
-command! AWSConsole call AWSConsole()
-function! AWSConsole()
-    let result = system("open https://ap-northeast-1.console.aws.amazon.com/console/home?nc2=h_ct&region=ap-northeast-1&src=header-signin#")
-endfunction
-
-command! AWSBlog call AWSBlog()
-function! AWSBlog()
-    let result = system("open https://aws.amazon.com/blogs/aws")
-endfunction
-
-command! AWSEC2 call AWSEC2()
-function! AWSEC2()
-    let result = system("open https://ap-northeast-1.console.aws.amazon.com/ec2/home?region=ap-northeast-1#Home:")
-endfunction
-
-command! Atmarkit call Atmarkit()
-function! Atmarkit()
-    let result = system("open https://www.atmarkit.co.jp/ait/subtop/features/special/")
-endfunction
-
-command! Task call Task()
-function! Task()
-    let result = system("open https://calendar.google.com/calendar/b/1/r")
-endfunction
-
 
 :command! -nargs=0 Route53ListHostedZones :call Route53("list-hosted-zones")
 
