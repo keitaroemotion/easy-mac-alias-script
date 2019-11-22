@@ -460,6 +460,16 @@ function! Task()
     let result = system("open https://calendar.google.com/calendar/b/1/r")
 endfunction
 
+
+:command! -nargs=0 Route53ListHostedZones :call Route53("list-hosted-zones")
+
+function! Route53(...)
+    if a:0 >= 1
+        let result = system("aws route53 "  . a:1)
+    endif
+    echo result
+endfunction
+
 command! Menu call Menu() 
 function! Menu()
     echo "\nScreen                     ... screencapture (mac only)"
@@ -510,3 +520,7 @@ augroup CursorLine
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   au WinLeave * setlocal nocursorline
 augroup END
+
+set ma
+let g:ag_prg="/usr/local/bin/ag --vimgrep"
+let g:ag_working_path_mode="r"
